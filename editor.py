@@ -7,9 +7,9 @@ from buffer import Buffer
 
 class Editor:
     def __init__(self):
-        self.TextBuffer = Buffer("")
-        self.Message = self.TextBuffer.GetBuffer()
-        self.EditorWindow = pyglet.window.Window(500,500,"PyEdit")
+        self.buffer = Buffer("")
+        self.Message = self.buffer.GetBuffer()
+        self.editorWindow = pyglet.window.Window(500,500,"PyEdit")
         self.Font = self.LoadFont()
         
 
@@ -20,26 +20,18 @@ class Editor:
     def run(self):
         pyglet.gl.glClearColor(1,1,1,1)
         label = pyglet.text.Label(self.Message, font_name=self.Font, font_size=12, 
-                                  x=1, y=self.EditorWindow.height-12,
+                                  x=1, y=self.editorWindow.height-13,
                                   anchor_x='left', anchor_y='baseline')
         label.color = (0,0,0,255)
 
-        @self.EditorWindow.event
+        @self.editorWindow.event
         def on_draw():
-            self.EditorWindow.clear()
+            self.editorWindow.clear()
             label.draw()
         
-        @self.EditorWindow.event
+        @self.editorWindow.event
         def on_key_press(symbol, modifiers):
-            if (symbol == key.BACKSPACE):
-                self.TextBuffer.Backspace()
-                label.text = self.TextBuffer.GetBuffer()
-
-            elif (key._key_names.__contains__(symbol)):
-                if(modifiers == 0):
-                    self.TextBuffer.TypeIntoBuffer(key._key_names[symbol].lower())
-                    label.text = self.TextBuffer.GetBuffer()
-                else:
-                    self.TextBuffer.TypeIntoBuffer(key._key_names[symbol])
-                    label.text = self.TextBuffer.GetBuffer()
+            self.buffer.TypedIntoBuffer(symbol, modifiers)
+            label.text = self.buffer.GetBuffer()
+            
         pyglet.app.run()
