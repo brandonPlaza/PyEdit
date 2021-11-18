@@ -5,7 +5,7 @@ from character_parser import Parser
 
 class Buffer:
     def __init__(self, buffer):
-        self.lines = 1
+        self.lines = []
         self.buffer = buffer
         self.ForbiddenKeys = {key.LCTRL, key.RCTRL, key.LOPTION, key.ROPTION, key.UP, key.DOWN, key.LEFT, key.RIGHT,
                               key.TAB, key.LCOMMAND, key.RCOMMAND}
@@ -19,19 +19,15 @@ class Buffer:
 
     def TypedIntoBuffer(self, keyPressed, modifier):
         rawCharacter = key._key_names[keyPressed]
-        if rawCharacter in ('LSHIFT', 'RSHIFT'):
-            print('Shift')
+        if keyPressed in (key.LSHIFT, key.RSHIFT, key.CAPSLOCK):
+            return
         elif (keyPressed == key.BACKSPACE):
             self.Backspace()
+            return
         elif (keyPressed == key.SPACE):
             self.Space()
-        elif '_' in rawCharacter:
-            self.buffer += self.parser.ParseInteger(rawCharacter)
             return
-        elif keyPressed in self.ForbiddenKeys:
-            pass
-        else:
-            self.buffer += self.parser.ParseCharacter(rawCharacter, modifier)
+        self.buffer += self.parser.ParseKey(keyPressed,rawCharacter, self.ForbiddenKeys, modifier)
         
     def GetBuffer(self):
         return self.buffer

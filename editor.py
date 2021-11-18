@@ -10,7 +10,6 @@ class Editor:
         self.buffer = Buffer("")
         self.Message = self.buffer.GetBuffer()
         self.editorWindow = pyglet.window.Window(500,500,"PyEdit")
-        self.Font = self.LoadFont()
         
 
     def LoadFont(self):
@@ -19,7 +18,7 @@ class Editor:
 
     def run(self):
         pyglet.gl.glClearColor(1,1,1,1)
-        label = pyglet.text.Label(self.Message, font_name=self.Font, font_size=12, 
+        label = pyglet.text.Label(self.Message, font_name='Courier', font_size=12, 
                                   x=1, y=self.editorWindow.height-13,
                                   anchor_x='left', anchor_y='baseline')
         label.color = (0,0,0,255)
