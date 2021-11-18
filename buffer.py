@@ -11,6 +11,7 @@ class Buffer:
     def SpecialKeyPressed(self, character):
         if (character == key.BACKSPACE):
             self.Backspace()
+            return True
     
     def GetBuffer(self):
         return self.buffer
