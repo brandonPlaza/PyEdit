@@ -8,12 +8,12 @@ class Editor:
     def __init__(self):
         self.TextBuffer = Buffer("")
         self.Message = self.TextBuffer.GetBuffer()
-        self.EditorWindow = pyglet.window.Window()
+        self.EditorWindow = pyglet.window.Window(500,500,"PyEdit")
     
     def run(self):
         pyglet.gl.glClearColor(1,1,1,1)
-        label = pyglet.text.Label(self.Message, font_name='Times New Roman', font_size=12, 
-                                  x=self.EditorWindow.width//2-315, y=self.EditorWindow.height-12,
+        label = pyglet.text.Label(self.Message, font_name='Consolas', font_size=12, 
+                                  x=5, y=self.EditorWindow.height-12,
                                   anchor_x='left', anchor_y='baseline')
         label.color = (0,0,0,255)
 
