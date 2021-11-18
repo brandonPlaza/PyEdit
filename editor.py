@@ -10,11 +10,6 @@ class Editor:
         self.buffer = Buffer("")
         self.Message = self.buffer.GetBuffer()
         self.editorWindow = pyglet.window.Window(500,500,"PyEdit")
-        
-
-    def LoadFont(self):
-        font.add_directory('fonts/')
-        return font.load('Consolas',12)
 
     def run(self):
         pyglet.gl.glClearColor(1,1,1,1)
@@ -30,7 +25,12 @@ class Editor:
         
         @self.editorWindow.event
         def on_key_press(symbol, modifiers):
-            self.buffer.TypedIntoBuffer(symbol, modifiers)
+            self.buffer.SpecialKeyPressed(symbol)
+            label.text = self.buffer.GetBuffer()
+
+        @self.editorWindow.event
+        def on_text(text):
+            self.buffer.TypeIntoBuffer(text)
             label.text = self.buffer.GetBuffer()
             
         pyglet.app.run()
