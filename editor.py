@@ -14,7 +14,7 @@ class Editor:
     def run(self):
         pyglet.gl.glClearColor(1,1,1,1)
         label = pyglet.text.Label(self.Message, font_name='Courier', font_size=12, 
-                                  x=1, y=self.editorWindow.height-13,
+                                  x=1, y=self.editorWindow.height-15,
                                   anchor_x='left', anchor_y='baseline')
         label.color = (0,0,0,255)
 
