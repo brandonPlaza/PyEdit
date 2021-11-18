@@ -11,9 +11,11 @@ class Editor:
         self.EditorWindow = pyglet.window.Window()
     
     def run(self):
+        pyglet.gl.glClearColor(1,1,1,1)
         label = pyglet.text.Label(self.Message, font_name='Times New Roman', font_size=12, 
-                                  x=self.EditorWindow.width//2, y=self.EditorWindow.height//2,
-                                  anchor_x='center', anchor_y='center')
+                                  x=self.EditorWindow.width//2-315, y=self.EditorWindow.height-12,
+                                  anchor_x='left', anchor_y='baseline')
+        label.color = (1,1,1,1)
 
         @self.EditorWindow.event
         def on_draw():
