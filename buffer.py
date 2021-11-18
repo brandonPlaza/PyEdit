@@ -3,14 +3,7 @@ from pyglet.window import key
 
 class Buffer:
     def __init__(self, buffer):
-        self.lines = []
         self.buffer = buffer
-    
-    def GenerateSingleLine(self, offset):
-        # return pyglet.text.Label("", font_name='Consolas', font_size=12, 
-        #                           x=1, y=488-offset,
-        #                           anchor_x='left', anchor_y='baseline')
-        pass
 
     def TypeIntoBuffer(self, character):
         self.buffer += character
@@ -18,7 +11,6 @@ class Buffer:
     def SpecialKeyPressed(self, character):
         if (character == key.BACKSPACE):
             self.Backspace()
-            return
     
     def GetBuffer(self):
         return self.buffer
