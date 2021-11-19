@@ -11,8 +11,7 @@ class Editor:
     def __init__(self):
         self.buffer = Buffer("")
         self.lineManager = LineManager()
-        self.Message = self.buffer.GetBuffer()
-        self.editorWindow = pyglet.window.Window(500,500,"PyEdit")
+        self.editorWindow = pyglet.window.Window(850,750,"PyEdit")
         self.cursor = {"LineNumber" : self.lineManager.GetCurrentLineNumber(), "CharacterNumber" : 0}
 
     def run(self):

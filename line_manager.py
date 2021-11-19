@@ -8,7 +8,7 @@ class LineManager:
 
     def CreateNewLine(self):
         newLine = Line(self.numberOfLines)
-        newLine.CreateLine("", 'Courier', 12, 1, 480)
+        newLine.CreateLine("", 'Courier', 12, 1, 735)
         self.listOfLines.append(newLine)
         self.numberOfLines+=1
 
