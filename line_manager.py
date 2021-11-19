@@ -7,10 +7,11 @@ class LineManager:
         self.CreateNewLine()
 
     def CreateNewLine(self):
-        newLine = Line(self.numberOfLines)
-        newLine.CreateLine("", 'Courier', 12, 1, 735)
-        self.listOfLines.append(newLine)
         self.numberOfLines+=1
+        newLine = Line(self.numberOfLines)
+        newLine.CreateLine("", 'Courier', 12, 1, 735 - (15 * self.numberOfLines))
+        self.listOfLines.append(newLine)
+        
 
     def GetCurrentLineNumber(self):
         return self.numberOfLines

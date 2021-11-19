@@ -3,24 +3,25 @@ from pyglet.window import key
 
 class Buffer:
     def __init__(self, buffer):
-        self.buffer = buffer
+        #self.buffer = buffer
+        self.listOfBuffersForEachLine = [buffer]
 
-    def TypeIntoBuffer(self, character):
-        self.buffer += character
+    def TypeIntoBuffer(self, character, bufferLine):
+        self.listOfBuffersForEachLine[bufferLine-1] += character
 
-    def SpecialKeyPressed(self, character):
+    def SpecialKeyPressed(self, character, bufferLine):
         if (character == key.BACKSPACE):
-            self.Backspace()
+            self.Backspace(bufferLine-1)
             return True
     
-    def GetBuffer(self):
-        return self.buffer
+    def GetBuffer(self,bufferLine):
+        return self.listOfBuffersForEachLine[bufferLine-1]
+    
+    def AddNewBufferLine(self):
+        self.listOfBuffersForEachLine.append("")
 
-    def ClearBuffer(self):
-        self.buffer = ""
-
-    def Backspace(self):
-        self.buffer = self.buffer[:-1]
+    def Backspace(self,bufferLine):
+        self.listOfBuffersForEachLine[bufferLine] = self.listOfBuffersForEachLine[bufferLine][:-1]
     
     # def TypedIntoBuffer(self, keyPressed, modifier):
     #     rawCharacter = key._key_names[keyPressed]

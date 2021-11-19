@@ -16,6 +16,7 @@ class Editor:
 
     def run(self):
         pyglet.gl.glClearColor(1,1,1,1)
+
         @self.editorWindow.event
         def on_draw():
             self.editorWindow.clear()
@@ -24,13 +25,18 @@ class Editor:
         
         @self.editorWindow.event
         def on_key_press(symbol, modifiers):
-            if self.buffer.SpecialKeyPressed(symbol):
-                self.lineManager.GetLineFromNumber(self.cursor["LineNumber"]).UpdateLineText(self.buffer.GetBuffer())
+            if symbol == key.ENTER:
+                self.lineManager.CreateNewLine()
+                self.cursor["LineNumber"] = self.lineManager.GetCurrentLineNumber()
+                self.buffer.AddNewBufferLine()
+            elif self.buffer.SpecialKeyPressed(symbol, self.cursor["LineNumber"]):
+                self.lineManager.GetLineFromNumber(self.cursor["LineNumber"]).UpdateLineText(self.buffer.GetBuffer(self.cursor["LineNumber"]))
 
         @self.editorWindow.event
         def on_text(text):
-            self.buffer.TypeIntoBuffer(text)
-            self.lineManager.GetLineFromNumber(self.cursor["LineNumber"]).UpdateLineText(self.buffer.GetBuffer())
+            print(text)
+            self.buffer.TypeIntoBuffer(text, self.cursor["LineNumber"])
+            self.lineManager.GetLineFromNumber(self.cursor["LineNumber"]).UpdateLineText(self.buffer.GetBuffer(self.cursor["LineNumber"]))
 
             
         pyglet.app.run()
