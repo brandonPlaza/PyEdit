@@ -1,0 +1,9 @@
+PyEdit changes for version 0.2.0 beta
+
+    - Create CoreEditor and EditorFrame so their concerns can be seperated
+      -CoreEditor handles every line on screen aswell as key events
+      -EditorFrame handles the rendering of the window and identifies key events to pass them to the CoreEditor
+    - Make Coursor a class itself and implement a way to go accross lines via arrow keys
+    - Remove that weird spacing bug when creating a new line
+    - Create a visual coursor
+    - Menu bar with basic dropdown to placehold file operations
