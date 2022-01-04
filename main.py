@@ -1,5 +1,5 @@
-from editor import Editor
+from editor_frame import EditorFrame
 
-editor = Editor()
+editor = EditorFrame()
 
 editor.run()
