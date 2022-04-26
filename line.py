@@ -16,6 +16,14 @@ class Line():
     def update_line_text(self, new_char):
         self.buffer += new_char
         self.line_content.text = self.buffer
+
+    def character_deleted(self,character_to_delete):
+        new_buffer = ""
+        for character in range(len(self.buffer)):
+            if(character != character_to_delete):
+                new_buffer+=self.buffer[character]
+        self.buffer = new_buffer
+        self.line_content.text = self.buffer
     
     def get_line_text(self):
         return self.buffer

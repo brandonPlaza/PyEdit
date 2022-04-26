@@ -29,11 +29,12 @@ class Cursor():
         if(direction_value>0): self.current_char+=direction_value
         if(direction_value<0): self.current_char-=direction_value
         
-    def get_cursor_location(self):
-        return (self.current_line, self.current_char)
+    def get_cursor_data(self):
+        return self
     
     def increment_cursor_char(self):
         self.current_char+=1
+        print(f"Cursor Line: {self.current_line}, Cursor Character: {self.current_char}")
         
     def decrement_cursor_char(self):
         self.current_char-=1
