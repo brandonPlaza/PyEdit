@@ -37,8 +37,8 @@ class LineManager:
         cursor_location = self.cursor.get_cursor_data()
 
         self.list_of_lines[cursor_location.current_line-1].character_deleted(cursor_location.current_char-1)
-
-        self.cursor.decrement_cursor_char()
+        if cursor_location.current_char>0:
+            self.cursor.decrement_cursor_char()
         
 
 
