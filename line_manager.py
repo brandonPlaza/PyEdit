@@ -40,9 +40,6 @@ class LineManager:
         if cursor_location.current_char>0:
             self.cursor.decrement_cursor_char()
         
-
-
-        
     def set_enter_flag(self, bool_val):
         self.enter_flag = bool_val
         

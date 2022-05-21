@@ -1,7 +1,9 @@
+from pyglet import shapes
 class Cursor():
     def __init__(self):
         self.current_line = 0
         self.current_char = 0
+        self.shape = shapes.Rectangle(200,200,20,100, color=(50,225,30))
     
     def change_cursor_line(self, direction_value, total_lines):
         if(direction_value>0) and (self.current_line + direction_value < total_lines): 

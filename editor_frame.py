@@ -1,6 +1,8 @@
+import imp
 import pyglet
 from pyglet.window import key
 from pyglet.window import mouse
+from pyglet import shapes
 
 from editor_core import EditorCore
 
@@ -17,6 +19,7 @@ class EditorFrame:
             self.window.clear()
             for new_line in self.core.get_list_of_lines():
                 new_line.line_content.draw()
+            self.core.line_manager.cursor.shape.draw()
         
         @self.window.event
         def on_key_press(symbol, modifiers):
